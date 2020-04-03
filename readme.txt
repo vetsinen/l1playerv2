@@ -1,0 +1,4 @@
+working release of this app is available on http://l1player.pythonanywhere.com/
+this webapp is a online-tool for managing musical collections. this project was inspired by app https://z1.fm/, it also allows anonymously listen to music. but also has unique features - categories management. it allows any user indicate genre and velocity of melody after listening it. this estimation is saved to db. and using this categories another users will be able to filter music they will listen.
+
+this project implemented by using python-framework flask and sqlite db and pure javascript. you are welcome to suggest ideas and feedbacks in issue-tracker of this repository
