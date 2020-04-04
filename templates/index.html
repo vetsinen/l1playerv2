@@ -7,18 +7,26 @@
     <link rel="stylesheet" href="static/main.css">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <style>
-        .trackrow {
+        .inlineitem {
             display: inline-block;
-            border: 1px solid white;
+        }
+
+        .trackrow {
+            border: 1px solid lavender;
+            display: flex;
+            align-items: center;
+            width: auto;
+
         }
 
         .songname {
             white-space: nowrap;
-            background-color: white;
+            background-color: lavender;
             width: 150px;
             overflow: hidden;
             text-overflow: clip;
         }
+
         .votes {
             min-width: 60px;
         }
@@ -40,46 +48,49 @@
     <a href=""></a>
 </div>
 {% for track in tracks %}
-    <div id="{{ track[0] }}" class="trackrow" title="{{ track[0] }}">
-        <audio controls preload="none">
-            {#            <source src="https://github.com/vetsinen/l1player/blob/master/static/mp3/{{ track[0] }}.mp3?raw=true" ype="audio/mpeg">#}
-            <source src="static/mp3/{{ track[0] }}.mp3" ype="audio/mpeg">
-        </audio>
-        <span class="songname" title="{{ track[0] }}<->{{ track[1] }}"> {{ track[0] }}</span>
-        <select class="genre" onchange="send('{{ track[0] }}')" style="max-width: 120px">
-            {#            <option value="{{ track[1] }}" >{{ track[1] }}</option> #}
-            <option selected="selected" disabled>choose genre</option>
-            <option value="popular">popular</option>
-            <option value="salsa cubana">salsa cubana</option>
-            <option value="bachata">bachata</option>
-            <option value="urban kiz">urban kiz</option>
-            <option value="chachacha">chachacha</option>
-            <option value="salsa la">salsa la</option>
-            <option value="merengue">merengue</option>
-            <option value="timba">timba</option>
-            <option value="dominicana">dominicana</option>
-            <option value="son">son</option>
-            <option value="kizomba(tradicional)">kizomba(tradicional)</option>
-            <option value="tarraxinha">tarraxinha</option>
-            <option value="TarraxO">TarraxO</option>
-            <option value="zouk">zouk</option>
-            <option value="tango">tango</option>
-            <option value="semba">semba</option>
-            <option value="douceur">douceur</option>
-        </select>
-        <button class="votes" value="{{ track[3] }}" onclick="like('{{ track[0] }}')">{{ track[3] }}❤</button>
+    <div class="inlineitem">
+        <div id="{{ track[0] }}" class="trackrow" title="{{ track[0] }}">
+            <audio controls preload="none">
+                {#            <source src="https://github.com/vetsinen/l1player/blob/master/static/mp3/{{ track[0] }}.mp3?raw=true" ype="audio/mpeg">#}
+                <source src="static/mp3/{{ track[0] }}.mp3" ype="audio/mpeg">
+            </audio>
+            <span class="songname" title="{{ track[0] }}<->{{ track[1] }}"> {{ track[0] }}</span>
+            <select class="genre" onchange="send('{{ track[0] }}')" style="max-width: 120px">
+                {#            <option value="{{ track[1] }}" >{{ track[1] }}</option> #}
+                <option selected="selected" disabled>choose genre</option>
+                <option value="popular">popular</option>
+                <option value="salsa cubana">salsa cubana</option>
+                <option value="bachata">bachata</option>
+                <option value="urban kiz">urban kiz</option>
+                <option value="chachacha">chachacha</option>
+                <option value="salsa la">salsa la</option>
+                <option value="merengue">merengue</option>
+                <option value="timba">timba</option>
+                <option value="dominicana">dominicana</option>
+                <option value="son">son</option>
+                <option value="kizomba(tradicional)">kizomba(tradicional)</option>
+                <option value="tarraxinha">tarraxinha</option>
+                <option value="TarraxO">TarraxO</option>
+                <option value="zouk">zouk</option>
+                <option value="tango">tango</option>
+                <option value="semba">semba</option>
+                <option value="douceur">douceur</option>
+            </select>
+            <button class="votes" value="{{ track[3] }}" onclick="like('{{ track[0] }}')">{{ track[3] }}❤</button>
 
 
-        {#        <select class="velocity">#}
-        {#            {% if tracks[2]|length %}#}
-        {#                <option value="{{ track[2] }}" selected="selected">{{ track[2] }}</option>#}
-        {#            {% endif %}#}
-        {#            <option disabled>choose velocity</option>#}
-        {#            <option value="slow">slow</option>#}
-        {#            <option value="normal">normal</option>#}
-        {#            <option value="fast">fast</option>#}
-        {#        </select>#}
+            {#        <select class="velocity">#}
+            {#            {% if tracks[2]|length %}#}
+            {#                <option value="{{ track[2] }}" selected="selected">{{ track[2] }}</option>#}
+            {#            {% endif %}#}
+            {#            <option disabled>choose velocity</option>#}
+            {#            <option value="slow">slow</option>#}
+            {#            <option value="normal">normal</option>#}
+            {#            <option value="fast">fast</option>#}
+            {#        </select>#}
+        </div>
     </div>
+
 {% endfor %}
 
 <script>
