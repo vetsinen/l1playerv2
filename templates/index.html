@@ -9,10 +9,12 @@
     <style>
         .trackrow {
             display: inline-block;
-            border: 1px solid gray;
+            border: 1px solid white;
         }
+
         .songname {
             white-space: nowrap;
+            background-color: white;
             width: 150px;
             overflow: hidden;
             text-overflow: clip;
@@ -35,30 +37,32 @@
     <a href=""></a>
 </div>
 {% for track in tracks %}
-    <div id="{{ track[0] }}" class="trackrow">
-        <audio controls metadata>
+    <div id="{{ track[0] }}" class="trackrow" title="{{ track[0] }}">
+        <audio controls preload="none">
             {#            <source src="https://github.com/vetsinen/l1player/blob/master/static/mp3/{{ track[0] }}.mp3?raw=true" ype="audio/mpeg">#}
             <source src="static/mp3/{{ track[0] }}.mp3" ype="audio/mpeg">
         </audio>
         <span class="songname" title="{{ track[0] }}<->{{ track[1] }}"> {{ track[0] }}</span>
         <select class="genre" onchange="send('{{ track[0] }}')" style="max-width: 120px">
-{#            <option value="{{ track[1] }}" >{{ track[1] }}</option> #}
-                        <option selected="selected" disabled>choose genre</option>
+            {#            <option value="{{ track[1] }}" >{{ track[1] }}</option> #}
+            <option selected="selected" disabled>choose genre</option>
             <option value="popular">popular</option>
-{#            <option value="merengue">merengue</option>#}
             <option value="salsa cubana">salsa cubana</option>
             <option value="bachata">bachata</option>
             <option value="urban kiz">urban kiz</option>
             <option value="chachacha">chachacha</option>
-            <option value="timba">timba</option>
             <option value="salsa la">salsa la</option>
-{#            <option value="dominicana">dominicana</option>#}
+            <option value="merengue">merengue</option>
+            <option value="timba">timba</option>
+            <option value="dominicana">dominicana</option>
+            <option value="son">son</option>
             <option value="kizomba(tradicional)">kizomba(tradicional)</option>
-{#            <option value="tarraxinha">tarraxinha</option>#}
-{#            <option value="TarraxO">TarraxO</option>#}
-{#            <option value="son">son</option>#}
-{#            <option value="semba">semba</option>#}
-{#            <option value="douceur">douceur</option>#}
+            <option value="tarraxinha">tarraxinha</option>
+            <option value="TarraxO">TarraxO</option>
+            <option value="zouk">zouk</option>
+            <option value="tango">tango</option>
+            <option value="semba">semba</option>
+            <option value="douceur">douceur</option>
         </select>
         <button class="votes" value="{{ track[3] }}" onclick="like('{{ track[0] }}')">{{ track[3] }}❤</button>
 
@@ -78,8 +82,15 @@
 <script>
     let tracks = {{tracks | safe}};
     const tracksN = tracks.length;
-
 </script>
 <script src="static/main.js"></script>
+<style>
+    body {
+        background-image: url('{{backimg}}');
+        background-repeat: no-repeat;
+        background-size: cover;
+        opacity: 1.5;;
+    }
+</style>
 </body>
 </html>
